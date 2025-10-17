@@ -1,0 +1,29 @@
+services:
+  ros2-jazzy-gpu:
+    build:
+      context: .
+      network: host
+    container_name: jazzy
+    runtime: nvidia
+    gpus: all
+    network_mode: host
+    dns:
+      - 1.1.1.1
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - QT_QPA_PLATFORM=xcb
+      - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - $HOME:/host_home
+      - /dev:/dev
+      - /etc/resolv.conf:/etc/resolv.conf:ro
+    working_dir: $HOME
+    tty: true
+    stdin_open: true
+    restart: always
+    command: zsh
+

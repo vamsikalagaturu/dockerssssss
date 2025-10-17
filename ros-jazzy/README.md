@@ -1,0 +1,4 @@
+- ros:jazzy desktop-full
+- nvidia
+- host net and HOME
+- x11 to wayland gui support
