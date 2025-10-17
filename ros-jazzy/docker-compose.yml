@@ -14,6 +14,7 @@ services:
       - QT_X11_NO_MITSHM=1
       - QT_QPA_PLATFORM=xcb
       - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
+      - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
       - NVIDIA_DRIVER_CAPABILITIES=all
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
@@ -21,6 +22,7 @@ services:
       - $HOME:/host_home
       - /dev:/dev
       - /etc/resolv.conf:/etc/resolv.conf:ro
+      - ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}
     working_dir: $HOME
     tty: true
     stdin_open: true

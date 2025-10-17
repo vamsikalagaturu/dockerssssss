@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     iputils-ping \
     net-tools \
-    xclip \
+    wl-clipboard \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the default shell to zsh
